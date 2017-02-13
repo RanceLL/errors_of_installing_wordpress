@@ -1,6 +1,6 @@
 
 I tried to install Wordpress with LAMP in AWS and met tons of errors and bugs.
-Here I'm going to summary of these errors.
+Here I'm going to make a summary of these errors.
 Hope it could be helpful for you.
 
 #ENVIRONMENT
