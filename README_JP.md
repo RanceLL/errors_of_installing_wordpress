@@ -1,7 +1,6 @@
 # errors_of_installing_wordpress
 AWSのUbuntuサーバーを使いwordpressサイト構築の際のエラーと対策まとめ
 
-
 先週、いくつかのチュートリアルを参考にして、AWSのAmazon EC2・Ubuntu・MySQL・Apache2・PHP（あわせて、LAMPともいう）というありふれたアプローチで、WordPressを使いなんとかこのサイトを立ち上げました。
 
 しかし、チュートリアルで全く言及しなかったエラーもたくさん起きたため、何十時間も費やし死ぬほど痛い目に遭いました。
