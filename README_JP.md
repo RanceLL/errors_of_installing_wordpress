@@ -46,11 +46,13 @@
   nano /etc/environment
   (addingCode:   LC_ALL=“en_GB.utf8"   to /etc/environment and    rebooting.)
 
+
 ##エラー_2
 LAMP環境を無事構築したのに、「ドメイン/phpmyadmin」が開けません（404エラーなど）。
 ##（分析と）解決策
 
      sudo sh -c 'echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf' && sudo service apache2 restart
+
 
 ##エラー_3
 「ドメイン/phpmyadmin」のページがでたが、ユーザーネームとパスワードがわかりません。
@@ -63,6 +65,7 @@ MySQLをインストールした際のパスワードとユーザーネームそ
   GRANT ALL ON wordpress.* TO 'root'@'localhost' IDENTIFIED BY '12345678'';
   FLUSH PRIVILEGES;
   EXIT;
+
 
 ##エラー_4
 wordpressを実装したのに、「ドメイン/wp-admin」ページを開けません。
@@ -112,6 +115,7 @@ sudo ufw unable
 
   sudo ufw disable
 
+
 ##エラー_6
 wordpressでプラグインをインストールしようとする際、hostname/ username/ ftp passwordなどを入力してください、という画面が表示されます。
 ##（分析と）解決策
@@ -124,6 +128,7 @@ wordpressでプラグインをインストールしようとする際、hostname
 
   define('FS_METHOD','direct’);
 
+
 ##エラー_7
 wordpressフォルダーはどうバックアップしますか。
 ##（分析と）解決策
@@ -132,6 +137,7 @@ wordpressフォルダーはどうバックアップしますか。
 scp -r ubuntu@ドメイン:/var/www/wordpress /LocalPath
 > WARN：リモートサーバーからファイルをダウンロードするには、sshでコマンドラインを打てばエラーが起き、ダウンロードできません！
 必ず、ローカルなターミナルでコマンドラインを打ってください。
+
 
 ##エラー_8
 wordpressでテーマを設定したのに、ページの表示が狂いまくりです。
