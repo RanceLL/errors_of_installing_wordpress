@@ -103,4 +103,4 @@ Then, add codes into the wp-config.php
 ##Error_6
 The theme could not be rendered well.
 ##Analyzing&Solution
-goto [YOURDOMAIN/wp-admin] → [Setting] → [General], replace those long domain address, such as "ec2-12-345-678-901.ap-southeast-1.compute.amazonaws.com"with your url like www.AAAAA.com
+goto [YOURDOMAIN/wp-admin] → [Setting] → [General], replace those long domain address, such as "ec2-12-345-678-901.ap-southeast-1.compute.amazonaws.com" with your url(like www.AAAAA.com).
