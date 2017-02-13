@@ -1,0 +1,2 @@
+# errors_of_installing_wordpress
+AWSのUbuntuサーバーを使いwordpressサイト構築の際のエラーと対策まとめ
