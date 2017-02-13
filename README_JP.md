@@ -1,5 +1,6 @@
 # errors_of_installing_wordpress
-AWSのUbuntuサーバーを使いwordpressサイト構築の際のエラーと対策まとめ
+# WSのUbuntuサーバーを使いwordpressサイト構築の際のエラーと対策まとめ
+
 
 先週、いくつかのチュートリアルを参考にして、AWSのAmazon EC2・Ubuntu・MySQL・Apache2・PHP（あわせて、LAMPともいう）というありふれたアプローチで、WordPressを使いなんとかこのサイトを立ち上げました。
 
@@ -44,12 +45,12 @@ AWSのUbuntuサーバーを使いwordpressサイト構築の際のエラーと�
 
   nano /etc/environment
   (addingCode:   LC_ALL=“en_GB.utf8"   to /etc/environment and    rebooting.)
+
 ##エラー_2
 LAMP環境を無事構築したのに、「ドメイン/phpmyadmin」が開けません（404エラーなど）。
 ##（分析と）解決策
 
      sudo sh -c 'echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf' && sudo service apache2 restart
-
 
 ##エラー_3
 「ドメイン/phpmyadmin」のページがでたが、ユーザーネームとパスワードがわかりません。
@@ -65,16 +66,6 @@ MySQLをインストールした際のパスワードとユーザーネームそ
 
 ##エラー_4
 wordpressを実装したのに、「ドメイン/wp-admin」ページを開けません。
-
-
-
-  vi /var/www/wordpress/wp-config.php
-   (addingCode:   LC_ALL=“en_GB.utf8"   to /etc/environment and
-  rebooting.)
-
-  nano /etc/environment
-  (addingCode:   LC_ALL=“en_GB.utf8"   to /etc/environment and    rebooting.)
-
 ##（分析と）解決策
 「wp-config.php」の設定には問題がある可能性が高い
 ####データベース情報の更新
@@ -88,21 +79,19 @@ wordpressを実装したのに、「ドメイン/wp-admin」ページを開け�
 > 上記のコマンドラインを打ち間違いったら、EXITというコマンドラインでsshに戻れない（もう一度サーバーにコネクトする必要がある）から、気をつけてそのままコピペしてください。
 ####「wp-config.php」ファイルの編集
 nanoというエディタを使い、
-
-
-次は、関連の内容を以下のように編集します。
-######データベース関連内容
-    nano /var/www/wordpress/wp-config.php
+nano /var/www/wordpress/wp-config.php
 で、「wp-config.php」編集の画面に移ります。
 define(‘DB_NAME’)からdefine(‘DB_HOST’)までの内容を以下のように編集します。
+
+######データベース関連内容
 
   define(‘DB_NAME’, ‘wordpress‘);
   define(‘DB_USER’, ‘newuser‘);
   define(‘DB_HOST’, ‘localhost‘);
 ######WordpressのAPIキー関連
 まず、wordpressの公式で秘密キーをゲットします。
-
 https://api.wordpress.org/secret-key/1.1/salt/
+
 八行目のすべての内容をコピーして、「wp-config.php」の中の
 define('AUTH_KEY',...........)からdefine('NONCE_SALT', )までの内容を先コピーした内容に入れ替えることにします。
 
@@ -137,18 +126,12 @@ wordpressでプラグインをインストールしようとする際、hostname
 
 ##エラー_7
 wordpressフォルダーはどうバックアップしますか。
-
 ##（分析と）解決策
 有料プラグインによって実現できるが、wordpressというフォルダーを丸ダウンロードしたほうがよいではと思います。
 以下のコマンドラインで実現します。
 scp -r ubuntu@ドメイン:/var/www/wordpress /LocalPath
 > WARN：リモートサーバーからファイルをダウンロードするには、sshでコマンドラインを打てばエラーが起き、ダウンロードできません！
 必ず、ローカルなターミナルでコマンドラインを打ってください。
-
-
-Q: Theme aren't rendered well
-A: 后台->设置->常规
-把wordpress地址和站点地址都设置成你的域名, instead of DNS given by aws.
 
 ##エラー_8
 wordpressでテーマを設定したのに、ページの表示が狂いまくりです。
