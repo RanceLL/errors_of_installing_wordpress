@@ -39,7 +39,11 @@ AWSのUbuntuサーバーを使いwordpressサイト構築の際のエラーと�
 
 もしくは、nanoというエディタを使ってenvironmentファイルに直接的にコードを追加します。
 
-  /etc/environment
+  vi /etc/environment
+   (addingCode:   LC_ALL=“en_GB.utf8"   to /etc/environment and
+  rebooting.)
+
+  nano /etc/environment
   (addingCode:   LC_ALL=“en_GB.utf8"   to /etc/environment and    rebooting.)
 ##エラー_2
 LAMP環境を無事構築したのに、「ドメイン/phpmyadmin」が開けません（404エラーなど）。
@@ -63,6 +67,12 @@ MySQLをインストールした際のパスワードとユーザーネームそ
 ##エラー_4
 wordpressを実装したのに、「ドメイン/wp-admin」ページを開けません。
 
+
+
+  vi /var/www/wordpress/wp-config.php
+   (addingCode:   LC_ALL=“en_GB.utf8"   to /etc/environment and
+  rebooting.)
+
   nano /etc/environment
   (addingCode:   LC_ALL=“en_GB.utf8"   to /etc/environment and    rebooting.)
 
@@ -80,11 +90,11 @@ wordpressを実装したのに、「ドメイン/wp-admin」ページを開け�
 ####「wp-config.php」ファイルの編集
 nanoというエディタを使い、
 
-  nano /var/www/wordpress/wp-config.php
-で、「wp-config.php」の内容を画面に移ります。
 
 次は、関連の内容を以下のように編集します。
 ######データベース関連内容
+    nano /var/www/wordpress/wp-config.php
+で、「wp-config.php」編集の画面に移ります。
 define(‘DB_NAME’)からdefine(‘DB_HOST’)までの内容を以下のように編集します。
 
   define(‘DB_NAME’, ‘wordpress‘);
